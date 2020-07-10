@@ -1,0 +1,61 @@
+<!-- Navigation -->
+<treo-vertical-navigation class="theme-dark"
+                         [appearance]="'classic'"
+                         [mode]="isScreenSmall ? 'over' : 'side'"
+                         [name]="'mainNavigation'"
+                         [navigation]="data.navigation"
+                         [opened]="!isScreenSmall">
+
+    <div treoVerticalNavigationContentHeader>
+        <div class="logo">
+            <img src="assets/images/logo/logo-text-on-dark.svg">
+            <span class="docs-tag">
+                DOCS
+            </span>
+        </div>
+    </div>
+
+</treo-vertical-navigation>
+
+<!-- Wrapper -->
+<div class="wrapper">
+
+    <!-- Header -->
+    <div class="header">
+
+        <!-- Navigation toggle button -->
+        <button class="navigation-toggle-button"
+                mat-icon-button
+                (click)="toggleNavigation('mainNavigation')">
+            <mat-icon [svgIcon]="'menu'"></mat-icon>
+        </button>
+
+        <!-- Spacer -->
+        <div class="spacer"></div>
+
+        <!-- Dark mode toggle -->
+        <div class="dark-mode-toggle">
+            Light
+            <mat-slide-toggle (change)="toggleDarkMode()"
+                              color="primary">
+                Dark
+            </mat-slide-toggle>
+        </div>
+
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+
+        <!-- *ngIf="true" hack is required here for router-outlet to work correctly. Otherwise,
+             it won't register the changes on the layout and won't update the view. -->
+        <router-outlet *ngIf="true"></router-outlet>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        Treo &copy; {{currentYear}}
+    </div>
+
+</div>
